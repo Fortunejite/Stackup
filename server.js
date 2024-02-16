@@ -81,7 +81,7 @@ Issuer.discover(process.env.issuer).then((oidcIssuer) => {
   const clientLogin = new oidcIssuer.Client({
     client_id: process.env.client_id,
     client_secret: process.env.client_secret,
-    redirect_uris: ['http://localhost:8000/login/callback'],
+    redirect_uris: ['https://cryptnex.tech/login/callback'],
     response_types: ['code'],
     token_endpoint_auth_method: 'client_secret_post',
   });
@@ -89,7 +89,7 @@ Issuer.discover(process.env.issuer).then((oidcIssuer) => {
   const clientSignup = new oidcIssuer.Client({
     client_id: process.env.client_id,
     client_secret: process.env.client_secret,
-    redirect_uris: ['http://localhost:8000/signup/callback'],
+    redirect_uris: ['https://cryptnex.tech/signup/callback'],
     response_types: ['code'],
     token_endpoint_auth_method: 'client_secret_post',
   });
@@ -129,7 +129,7 @@ passport.deserializeUser((user, done) => {
 
 const io = Socket(server, {
   cors: {
-    origin: 'http://localhost:8000',
+    origin: 'https://cryptnex.tech',
     credentials: true,
   },
 });
