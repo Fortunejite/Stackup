@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/register2.js"></script>
+    <script src="/js/script_login.js"></script>
+    <script src="/js/register.js"></script>
+    <link rel="stylesheet" href="/css/register2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1 class="top">Create Account</h1>
+                
+                <img id="profile" src="/images/avater.png" alt="" width="100px" height="100px">
+                <span id="prop">Select profile picture</span>
+                <input type="file" id="file" name="file" accept="image/*" placeholder="Select profile picture">
+                <input type="text" id="name2" placeholder="Username" />
+                <p id="unames"></p>
+                <input type="email" id="email" placeholder="Email" />
+                <p id="uemail"></p>
+                <input type="password" id="pass2" placeholder="Password" />
+                <p id="upass2"></p>
+                <input type="password" id="pass3" placeholder="Confirm password" />
+                <p id="upass3"></p>
+                <button id="up">Sign Up</button>
+                <a href="/signupAffinidi" id="aff">Signup with affinidi</a>
+                <div id="loadingSpinner" style="display: none;">
+  <!-- Add your loading animation here -->
+                    <div class="spinner"></div>
+                </div>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1 class="top">Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="text" id="name1" placeholder="Email" />
+                <p id="uname"></p>
+                <input type="password" id="pass1" placeholder="Password" />
+                <p id="upass"></p>
+                <a href="#">Forgot your password?</a>
+                <button id="sign">Sign In</button>
+                <a href="/loginAffinidi" id="aff">Login with affinidi</a>
+                <div id="loadingSpinner" style="display: none;">
+  <!-- Add your loading animation here -->
+                    <div class="spinner"></div>
+                </div>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

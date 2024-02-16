@@ -6,8 +6,8 @@ class DBClient {
     this.host = process.env.DB_HOST || 'localhost';
     this.port = process.env.DB_PORT || 27017;
     this.db = process.env.DB_DATABASE || 'Chat';
-    this.url = `mongodb://${this.host}:${this.port}/${this.db}`;
-    // this.url = 'mongodb+srv://fortunejite:Fortune1@talkify.yaelscc.mongodb.net/?retryWrites=true&w=majority';
+    // this.url = `mongodb://${this.host}:${this.port}/${this.db}`;
+    this.url = 'mongodb+srv://fortunejite:Fortune1@talkify.yaelscc.mongodb.net/?retryWrites=true&w=majority';
     this.client = new MongoClient(this.url);
     // Connect to the MongoDB database
     this.client.connect((err) => {

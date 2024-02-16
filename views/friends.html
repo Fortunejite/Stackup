@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/users.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/script.js"></script>
+</head>
+<body>
+    <div id="main">
+        {% if users | length !== 0 %}
+            <h2>People you may know</h2>
+            {% for userz in users %}
+                {% if userz.username != user %}
+                    {% if friends %}
+                        {% if  userz.username not in friends %}
+                            {% if requests %}
+                                {% if  userz.username not in requests %}
+                                    <div id="user" class="pic">
+                                        <div id="pic">
+                                            <img class='dp' src="/image/{{userz.username}}" alt="{{userz.username}}" width="200px" height="200px">
+                                        </div>
+                                        <div>
+                                            <h3>{{userz.username}}</h3>
+                                            <div>
+                                                <button name="add" class="add">Send friend request</button>
+                                                <button name="add" class="profile">Visit profile</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                <div id="user">
+                                    <h3>{{userz.username}}</h3>
+                                    <button name="add" class="add">Send friend request</button>
+                                    <button name="add" class="profile">Visit profile</button>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% else %}
+                        {% if requests %}
+                            {% if  userz.username not in requests %}
+                                <div id="user">
+                                    <h3>{{userz.username}}</h3>
+                                    <button name="add" class="add">Send friend request</button>
+                                    <button name="add" class="profile">Visit profile</button>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div id="user">
+                                <h3>{{userz.username}}</h3>
+                                <button name="add" class="add">Send friend request</button>
+                                <button name="add" class="profile">Visit profile</button>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    
+                {% endif %}
+            {% endfor %}
+        {% else %}
+        <h2>You are the only user for now, enjoy the silence</h2>
+        {% endif %}
+</body>
+</html>

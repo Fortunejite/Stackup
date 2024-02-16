@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>News Feed</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <ul>
+      <li><a href="#news-feed" class="active">Home</a></li>
+      <li><a href="#messages-section">Messages</a></li>
+      <li><a href="#profile-section" id="profile-link">Profile</a></li>
+    </ul>
+  </header>
+
+  <div class="news-feed tab-content" id="news-feed">
+    <div class="hh">
+      <h2>People you may know</h2>
+      <button class="next">Next</button>
+    </div>
+    {% if users or users.lenght() > 1 %}
+    <div class="friends">
+
+      {% for userz in users %}
+          {% if userz.username != user.username %}
+          {% if friends %}
+            {% if  userz.username not in friends %}
+            <div class="friend">
+              <h3>{{userz.username}}</h3>
+              <button name="add" class="add">Send friend request</button>
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="friend">
+              <h3>{{userz.username}}</h3>
+              <button name="add" class="add">Send friend request</button>
+            </div>
+          {% endif %}
+          {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% for post in posts %}
+    <div class="news-item">
+      <h3>{{post.sender}}</h3>
+      <p>{{post.body}}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="messages-section tab-content" id="messages-section">
+    <h2>Messages</h2>
+    {% if friends%}
+      {% for friend in friends %}
+        <div class="message-item">
+          <h4>{{friend}}</h4>
+          <p>This is a sample message.</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+    <!-- Add more message items here as needed -->
+  </div>
+
+  <div class="profile-section tab-content" id="profile-section">
+    <h2>User Profile</h2>
+    <p id="name">Name: {{user.username}}</p>
+    <p id="email">Email: {{user.email}}</p>
+    <button id="logout">Logout</button>
+  </div>
+
+  <div class="fab">
+    <span style="font-size: 24px;">+</span>
+  </div>
+</body>
+</html>

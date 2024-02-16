@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/group.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+  <script src="/js/group.js"></script>
+  <title>Group</title>
+</head>
+<body>
+  <div class="main-container">
+    <div class="right-container">
+      <h6>{{user}}</h6>
+      <!-- Header -->
+      <div class="header">
+        <div class="img-text">
+          <li id="back"><i class="fas fa-arrow-left"></i></li>
+          <div class="user-img">
+            <img class="dp" src="/images/download.png" alt="{{groupId}}">
+          </div>
+          <div>
+            <h4 id="friend">{{ group }}</h4>
+          </div>
+        </div>
+        <div class="nav-icons">
+          <li><i class="fas fa-search"></i></li>
+          <li><i class="fas fa-ellipsis-v"></i></li>
+        </div>
+      </div>
+
+      <!-- Chat Container -->
+      <div class="chat-container">
+        {% for message in messages %}
+          {% if message.type === 'alert' %}
+          <div class="alert">
+            <h5>{{message.message}}</h5>
+          </div>
+          
+          {% elif message.sent_by !== user %}
+            <div class="message-box friend-message">
+              <div class="block">
+                <h4>{{ message.sent_by }}</h4>
+                <p>{{ message.message }}<br><span>{{ message.time }}</span></p>
+              </div>
+            </div>
+          {% else %}
+            <div class="message-box my-message">
+              <div class="block">
+                <h4>{{ message.sent_by }}</h4>
+                <p>{{ message.message }}<br><span>{{ message.time }}</span></p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Input Bottom -->
+    <div class="chatbox-input">
+      <i class="far fa-grin"></i>
+      <i class="fas fa-paperclip"></i>
+      <input type="text" placeholder="Type a message" id="message">
+      <button id="send">Send</button>
+    </div>
+  </div>
+</body>
+</html>

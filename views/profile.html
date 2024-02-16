@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/users.css">
+    <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/script.js"></script>
+    <title>profile</title>
+</head>
+<body>
+    <div id="main">
+        <div id="profile-container">
+                <img id="profile" src="/image/{{user.username}}" alt="{{user}}" width="200px" height="200px">
+            <h1 id="name">{{user.username}}</h1><span>
+                {% if user.affinidi %}
+                <i class="fas fa-check-circle" id="verified"></i>
+            {% endif %}
+            </span>
+        </div>
+        
+        <p id="email">Email: {{user.email}}</p>
+        
+        {% if user.friends | length !== 0%}
+            <h3>Friends: </h3>
+            <ul>
+                {% for i in user.friends %}
+                    <li><img class="dpFriends" src="/image/{{i}}" alt="{{i}}">{{i}}</li>
+                {% endfor %}
+            </ul>
+            {% if current_user.username == user.username %}
+                <br>
+                <button id="logout">Logout</button>
+            {% endif %}
+        {% else %}
+            {% if current_user.username == user.username %}
+                <br>    
+                <h3>You have no friends</h3>
+                <br>
+                <button id="logout">Logout</button>
+            {% else %}
+                <br>
+                <h3>{{user.username}} has no friends</h3>
+            {% endif %}
+        {% endif %}
+        
+
+        
+    </div>
+</body>
+</html>

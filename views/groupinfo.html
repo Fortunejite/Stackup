@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/groupinfo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>profile</title>
+</head>
+<body>
+    <div id="main">
+        <div id="profile-container">
+            <img id="profile" src="/images/download.png" alt="{{user}}" width="200px" height="200px">
+            <h1 id="name">{{group.name}}</h1>
+            <p class="description"><b>{{group.description}}</b></p>
+        </div>
+        <p id="email">GroupId: {{group._id}}</p>
+        
+        {% if group.members | length !== 0%}
+            <h3>Members: </h3>
+            <ul>
+                {% for i in group.members %}
+                    <li><img class="dpFriends" src="/image/{{i}}" alt="{{i}}">{{i}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+
+        
+    </div>
+</body>
+</html>

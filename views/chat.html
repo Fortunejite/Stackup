@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/391827d54c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/chat.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+  <script src="/js/chat.js"></script>
+  <title>Talkify</title>
+  
+</head>
+<body>
+  <h6>{{user}}</h6>
+  
+<div class="main-container">
+  <div class="navigate">
+    <div class="tab active" onclick="switchTab(0)">Friends</div>
+    <div class="tab" onclick="switchTab(1)">Group</div>
+  </div>
+  
+  <div id="content1" class="content active">
+    <div class="left-container">
+      <!-- Header -->
+      <div class="header">
+        <div class="user-img">
+          <img class="dpp" src="/image/{{user}}" alt="{{user}}" id="user">
+        </div>
+        <div class="nav-icons">
+          <li><i class="fas fa-users" id="users"></i></li>
+          <li><i class="fas fa-comment-dots" id="notif"></i></li>
+          <li><i class="fas fa-ellipsis-v"></i></li>
+        </div>
+      </div>
+  
+      <!-- Search Container -->
+      <div class="search-container">
+        <div class="input">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search or start new chat">
+        </div>
+      </div>
+  
+      <!-- Chats -->
+      <div class="chat-list">
+        {% if friends | length !== 0 %}
+            {% for friend in friends %}
+                <div class="chat-box">
+                  <div class="img-box">
+                      <img class="img-cover" src="/image/{{friend}}" alt="{{ friend }}">
+                  </div>
+                  <div class="chat-details">
+                      <div class="text-head">
+                      <h4 id="ffriend">{{friend}}</h4>
+                      <p class="time unread">11:49</p>
+                      </div>
+                      <div class="text-message">
+                      <p id="last"></p>
+                      <b>1</b>
+                      </div>
+                  </div>
+                </div>
+            {% endfor %}
+        {% else %}
+          <h2>Make friends in other to start Messsaging</h2>
+        {% endif %}
+      </div>
+    </div>
+  
+    <div class="right-container">
+      <!-- Header -->
+      <div class="header">
+        <div class="img-text">
+          <li id="back"><i class="fas fa-arrow-left"></i></li>
+          <div class="user-imgg">
+            <img class="dp" src="https://images.pexels.com/photos/2474307/pexels-photo-2474307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+          </div>
+          <div>
+            <h4 id="friend">Unknown</h4>
+            <span id="stats">Online</span>
+          </div>
+        </div>
+        <div class="nav-icons">
+          <li><i class="fas fa-search"></i></li>
+          <li><i class="fas fa-ellipsis-v"></i></li>
+        </div>
+      </div>
+  
+      <!-- Chat Container -->
+      <div class="chat-container">
+        
+        <!-- Other message boxes... -->
+      </div>
+  
+      <!-- Input Bottom -->
+      <div class="chatbox-input">
+        <i class="far fa-grin"></i>
+        <i class="fas fa-paperclip"></i>
+        <input type="text" placeholder="Type a message" id="message">
+        <button id="send">Send</button>
+      </div>
+    </div>
+  </div>
+  <div id="content2" class="content">
+    {% if groups | length !== 0 %}
+            {% for id, name in groups %}
+              <div class="group-box">
+                <div class="img-box">
+                    <img class="img-cover" src="/images/download.png" alt="{{ id }}">
+                </div>
+                <div class="group-details">
+                    <div class="text-head">
+                      <h4 id="group">{{ name }}</h4>
+                    <p class="time unread">11:49</p>
+                    </div>
+                    <div class="text-message">
+                    <p id="last"></p>
+                    <b>1</b>
+                    </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <h4>You have not joined any group</h4>
+          {% endif %}
+          <div class="buttons">
+            <button id="joinGroup">Join a group</button>
+            <button id="createGroup">Create a group</button>
+          </div>
+  </div>
+</div>
+<script>
+  function switchTab(tabIndex) {
+  // Remove active class from all tabs
+  $('.tab').removeClass('active');
+  
+  // Add active class to selected tab
+  $('.tab:eq(' + tabIndex + ')').addClass('active');
+  
+  // Hide all content elements
+  $('.content').removeClass('active');
+  
+  // Show selected content
+  $('.content:eq(' + tabIndex + ')').addClass('active');
+}
+
+</script>
+</body>
+</html>
+
+
+
+

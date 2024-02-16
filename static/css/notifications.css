@@ -1,0 +1,50 @@
+/* notifications.css */
+:root {
+    --main-bg-color: #1B1D24;
+    --primary-color: #365A08;
+    --secondary-color: #5D9D0B;
+    --accent-color: #72EB3A;
+}
+
+/* Apply background color to relevant elements */
+#main, body {
+    background: var(--main-bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Define text colors */
+p, h1, h3 {
+    color: white;
+}
+
+/* Style notification container */
+.notification {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid var(--accent-color);
+    padding: 20px;
+}
+
+/* Style notification text */
+.notification-text {
+    flex: 1;
+    margin-left: 20px;
+}
+
+/* Style buttons within notification */
+#accept, #reject {
+    background-color: var(--secondary-color);
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-right: 10px;
+    color: white;
+}
+
+#accept:hover, #reject:hover {
+    background-color: var(--accent-color);
+}

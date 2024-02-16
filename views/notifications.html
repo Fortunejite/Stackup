@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/notifications.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/notif.js"></script>
+    <title>Notifications</title>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <h1>Notifications</h1>
+        </div>
+        <div id="notifications">
+            {% if notifications | length !== 0 %}
+                {% for notification in notifications %}
+                    <div class="notification">
+                        {% if notification.id %}
+                            <div class="notification-image">
+                                
+                            </div>
+                        {% endif %}
+                        <div class="notification-text">
+                            <p id="message">{{ notification.message }}</p>
+                            {% if notification.category === 'Request' %}
+                                <button id="accept">Accept</button>
+                                <button id="reject">Reject</button>
+                            {% endif %}
+
+                            <p id="time">{{ notification.time }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3>You have no notification. You are done for the day 🎉</h3>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

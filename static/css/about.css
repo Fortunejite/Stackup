@@ -1,0 +1,216 @@
+/* about.css */
+
+/* General Styles */
+:root {
+    --main-bg-color: #1B1D24;
+    --primary-color: #365A08;
+    --secondary-color: #5D9D0B;
+    --accent-color: #72EB3A;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--main-bg-color);
+    color: white; /* Set text color to white */
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-logo img {
+    width: 100px;
+}
+
+.navbar-menu {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--accent-color);
+}
+
+/* Intro Section */
+.intro {
+    background-color: var(--main-bg-color);
+    text-align: center;
+    padding: 100px 0;
+}
+
+.intro-content h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.intro-content p {
+    font-size: 18px;
+    color: #ccc; /* Lighter text color */
+}
+
+/* Features Section */
+.features {
+    padding: 50px 0;
+    text-align: center;
+    display: flex;
+}
+
+.feature {
+    margin-bottom: 40px;
+}
+
+.feature img {
+    width: 300px;
+    height: 300px;
+    border-radius: 360px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.feature h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 18px;
+    color: #ccc; /* Lighter text color */
+}
+
+/* About Section */
+.about {
+    background-color: var(--main-bg-color);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.about-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 18px;
+    color: #ccc; /* Lighter text color */
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.member {
+    text-align: center;
+}
+
+.member h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.member ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.member ul li {
+    margin-bottom: 5px;
+}
+
+.github-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+/* Styling for the new section */
+.statistics {
+  background-color: var(--main-bg-color);
+  text-align: center;
+  padding: 100px 0;
+}
+
+.statistics-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: var(--secondary-color); /* Use secondary color for the title */
+}
+
+.user-count {
+  font-size: 24px;
+  color: var(--primary-color); /* Use primary color for user counts */
+  margin: 10px 0;
+}
+
+/* Add padding to the features section */
+.features {
+  padding: 50px 0;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of features */
+  justify-content: space-between; /* Add space between features */
+}
+
+.feature {
+  margin-bottom: 40px;
+  flex: 1; /* Let features take equal width */
+  padding: 20px; /* Add padding to features for spacing */
+  background-color: var(--main-bg-color); /* Add background color */
+  border: 1px solid var(--accent-color); /* Add border for style */
+  border-radius: 8px; /* Round the corners */
+  transition: transform 0.2s; /* Add hover effect */
+}
+
+.feature:hover {
+  transform: translateY(-5px); /* Move up on hover */
+}
+
+/* Separate .github-link from team member */
+.github-link {
+  margin-top: 20px;
+}
+
+.github-link:hover {
+  background-color: var(--accent-color); /* Add hover effect for GitHub link */
+}
