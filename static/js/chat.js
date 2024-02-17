@@ -86,7 +86,7 @@ $(document).ready(function () {
     switchTab(1); // Assuming your switchTab function accepts tab indices starting from 0
   }
 
-  const socket = io('http://localhost:8000');
+  const socket = io('https://cryptnex.tech');
   socket.emit('add-user', name);
   socket.on('msg-recieved', (data) => {
     console.log(data.sender);
