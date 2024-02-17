@@ -131,6 +131,12 @@ const io = Socket(server, {
   cors: {
     origin: 'https://cryptnex.tech',
     credentials: true,
+    transports: ['websocket',
+      'flashsocket',
+      'htmlfile',
+      'xhr-polling',
+      'jsonp-polling',
+      'polling'],
   },
 });
 

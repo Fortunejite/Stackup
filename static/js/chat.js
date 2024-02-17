@@ -35,11 +35,13 @@ function getMessages(name) {
           const date = msg.time;
           const owner = msg.sent_by;
           if (owner === name) {
-            const newMessage = $(`<div class='message-box friend-message'></div>`);
+            const newMessage = $(
+              '<div class=\'message-box friend-message\'></div>',
+            );
             newMessage.append(`<p>${text}<br><span>${date}</span></p>`);
             parent.append(newMessage);
           } else {
-            const newMessage = $(`<div class='message-box my-message'></div>`);
+            const newMessage = $('<div class=\'message-box my-message\'></div>');
             newMessage.append(`<p>${text}<br><span>${date}</span></p>`);
             parent.append(newMessage);
           }
@@ -66,14 +68,15 @@ function sendMessage(name, socket) {
     success: function (response) {
       $('#message').val('');
       const parent = $('.chat-container');
-      const newMessage = $(`<div class='message-box my-message'></div>`);
-      newMessage.append(`<p>${response.message}<br><span>${response.time}</span></p>`);
+      const newMessage = $('<div class=\'message-box my-message\'></div>');
+      newMessage.append(
+        `<p>${response.message}<br><span>${response.time}</span></p>`,
+      );
       parent.append(newMessage);
       const div = $('.chat-container');
       div.scrollTop(div[0].scrollHeight);
       socket.emit('send-msg', data);
     },
-
   });
 }
 
@@ -86,7 +89,7 @@ $(document).ready(function () {
     switchTab(1); // Assuming your switchTab function accepts tab indices starting from 0
   }
 
-  const socket = io('https://cryptnex.tech');
+  const socket = io('https://cryptnex.tech', { secure: true });
   socket.emit('add-user', name);
   socket.on('msg-recieved', (data) => {
     console.log(data.sender);
@@ -94,7 +97,7 @@ $(document).ready(function () {
     console.log(data.sender === $('#friend').text());
     if (data.sender === $('#friend').text()) {
       const parent = $('.chat-container');
-      const newMessage = $(`<div class='message-box friend-message'></div>`);
+      const newMessage = $('<div class=\'message-box friend-message\'></div>');
       newMessage.append(`<p>${data.message}<br><span>${data.time}</span></p>`);
       parent.append(newMessage);
       const div = $('.chat-container');
@@ -114,7 +117,9 @@ $(document).ready(function () {
 
   $('.group-box').click(function (event) {
     event.preventDefault();
-    window.location.href = `/api/v1/groupChat/${$(this).find('img.img-cover').attr('alt')}?x-token=${token}`;
+    window.location.href = `/api/v1/groupChat/${$(this)
+      .find('img.img-cover')
+      .attr('alt')}?x-token=${token}`;
   });
   $('#send').click(function (event) {
     event.preventDefault();
